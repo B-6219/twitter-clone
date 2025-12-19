@@ -53,9 +53,10 @@ export const signup = async (req, res) => {
 
 export const login = async (req, res) => {
   try {
-    const { username, password } = req.body;
+    
+    const {username,password} = req.body
 
-    const user = await User.findOne({ username });
+    const user = await User.findOne({username});
     if (!user) {
       return res.status(400).json({ message: "Invalid username or password" });
     }
@@ -77,6 +78,8 @@ export const login = async (req, res) => {
       profileImg: user.profileImg,
       coverImg: user.coverImg,
     });
+    console.log('Request body' , req.body);
+    
   } catch (error) {
     console.error("Login error:", error.message);
     res.status(500).json({ message: "Server Error" });
@@ -99,5 +102,6 @@ export const getMe = async (req, res) => {
     res.status(200).json(user);
   } catch (error) {
     res.status(500).json({ message: "Server Error" });
+    console.error("GetMe error:", error.message);
   }
 };
