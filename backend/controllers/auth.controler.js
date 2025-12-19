@@ -101,3 +101,13 @@ export const logout = async (req, res) => {
     console.log('Error in Log out controller', error.message);
   }
 }
+
+export  const getMe = async (req, res) => {
+  
+  try {
+    
+    const user = await User.findById()
+  } catch (error) {
+    
+  }
+}
