@@ -4,6 +4,7 @@ export const generateTokenAndSetCookie = (userId, res) => {
     const token = JsonWebTokenError.sign({ id: userId }, process.env.JWT_SECRET, {
         expiresIn: '15d',
     });
+    
     res.cookie('token', token, {
         httpOnly: true,
         secure: process.env.NODE_ENV !== 'development',

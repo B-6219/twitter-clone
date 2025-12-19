@@ -4,6 +4,7 @@ import { generateTokenAndSetCookie } from '../lib/utils/generateToken.js';
 
 
 export const signup = async (req, res) => {
+
   try {
     const {fullName , username , email , password} = req.body;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -22,6 +23,9 @@ export const signup = async (req, res) => {
       return res.status(400).json({message: "Email already taken"});
     }
 
+    if (password < 6 ){
+      return res.status(400).json({error:'Password must be atleast 6 characters long'})
+    }
     //hashed password
 
     const salt = await bcrypt.genSalt(10);
@@ -50,18 +54,50 @@ export const signup = async (req, res) => {
     }
   } catch (error) {
     res.status(500).json({message: "Server Error"});
-    
+    console.log('Error in Sign Up controller', error.message);
   }
 }
 
 export const login = async (req, res) => {
-  res.json({
-    data: "Login Route",
-  });
+
+  try {
+
+    const {username ,password} = req.body
+    const user = await User.findOne({username})
+    const isPasswordValid = await bcrypt.compare(password, user?.password || " ")
+
+    if (!user || !isPasswordValid) {
+      return res.status(400).json({error:"invalid username or passwords"})
+    }
+
+    generateTokenAndSetCookie(user._id , res)
+    res.status(200).json({
+      _id :user._id,
+      fullName:user.fullName,
+      username: user.username,
+      email:user.email,
+      followers:user.followers,
+      following:user.following,
+      profileImg:user.profileImg,
+      coverImg:user.coverImg
+    })
+    
+  } catch (error) {
+    res.status(500).json({message: "Server Error"});
+    console.log('Error in Sign Up conroller', error.message);
+  }
 }
 
 export const logout = async (req, res) => {
-  res.json({
-    data: "Logout Route",
-  });
+
+  try {
+
+    res.cookie("jwt"," ",{maxAge:0})
+    res.status(400).json({message:'Logged out Sucessfully'})
+
+  } catch (error) {
+
+    res.status(500).json({message: "Server Error"});
+    console.log('Error in Log out controller', error.message);
+  }
 }
