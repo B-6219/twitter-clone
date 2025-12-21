@@ -4,7 +4,7 @@ import { Routes, Route } from 'react-router-dom'
 
 import SignUpPage from './auth/SignUpPage.jsx'
 import LoginPage from './auth/LoginPage'
-import Home from './auth/home'
+import Home from './auth/home.jsx'
 import Sidebar from './assets/components/common/sidebar.jsx'
 import RightPanel from './assets/components/common/RightPanel.jsx'
 

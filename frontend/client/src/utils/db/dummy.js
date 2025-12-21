@@ -1,3 +1,4 @@
+
 export const POSTS = [
 	{
 		_id: "1",
