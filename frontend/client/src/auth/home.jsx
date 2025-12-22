@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-import Post from "../assets/components/common/Post.jsx";
+import Post from "../assets/components/common/Posts.jsx";
 
 import CreatePost from "./home/CreatePost.jsx";
 
