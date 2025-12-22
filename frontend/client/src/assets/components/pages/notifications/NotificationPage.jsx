@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import LoadingSpinner from "../../components/common/LoadingSpinner.jsx";
-
+//import LoadingSpinner from "../../components/common/LoadingSpinner.jsx";
+import LoadingSpinner from "../../../components/common/LoadingSpinner"
 import { IoSettingsOutline } from "react-icons/io5";
 import { FaUser } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa6";
@@ -8,6 +8,7 @@ import { FaHeart } from "react-icons/fa6";
 const NotificationPage = () => {
     const isLoading = false;
     const notifications = [
+
         {
             _id: "1",
             from: {
