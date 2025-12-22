@@ -1,6 +1,9 @@
 import React from "react";
 
-import Post from "./Posts";
+
+//import Post from "./Post";
+import Post from "../common/Post"
+
 import PostSkeleton from "../skeletons/PostSkeleton";
 import { POSTS } from "../../../utils/db/dummy";
 

@@ -1,15 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { FaRegComment } from "react-icons/fa";
 import { BiRepost } from "react-icons/bi";
 import { FaRegHeart } from "react-icons/fa";
-import { FaRegBookmark } from "react-icons/fa6";
+import { FaRegBookmark } from "react-icons/fa";
 import { FaTrash } from "react-icons/fa";
-import { useState } from "react";
+
 import { Link } from "react-router-dom";
 
 const Post = ({ post }) => {
-    const [comment, setComment] = useState("");
+    if (!post || !post.user) return null;
+
+    const [newComment, setNewComment] = useState("");
     const postOwner = post.user;
     const isLiked = false;
 
@@ -23,6 +25,13 @@ const Post = ({ post }) => {
 
     const handlePostComment = (e) => {
         e.preventDefault();
+        if (!newComment.trim()) return; // Prevent empty comments
+
+        console.log("Submitting comment:", newComment);
+
+        // After the API call is successful, clear the input:
+        setNewComment("");
+
     };
 
     const handleLikePost = () => { };
@@ -110,8 +119,8 @@ const Post = ({ post }) => {
                                         <textarea
                                             className='textarea w-full p-1 rounded text-md resize-none border focus:outline-none  border-gray-800'
                                             placeholder='Add a comment...'
-                                            value={comment}
-                                            onChange={(e) => setComment(e.target.value)}
+                                            value={newComment}
+                                            onChange={(e) => setNewComment(e.target.value)}
                                         />
                                         <button className='btn btn-primary rounded-full btn-sm text-white px-4'>
                                             {isCommenting ? (

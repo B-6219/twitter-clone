@@ -193,7 +193,7 @@ const ProfilePage = () => {
                         </>
                     )}
 
-                    <Posts />
+                    {/* <Posts /> */}
                 </div>
             </div>
         </>
