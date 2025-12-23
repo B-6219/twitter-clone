@@ -9,6 +9,7 @@ import { FaTrash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const Post = ({ post }) => {
+
     if (!post || !post.user) return null;
 
     const [newComment, setNewComment] = useState("");
@@ -21,7 +22,7 @@ const Post = ({ post }) => {
 
     const isCommenting = false;
 
-    const handleDeletePost = () => { };
+    const handleDeletePost = () => {};
 
     const handlePostComment = (e) => {
         e.preventDefault();
