@@ -13,6 +13,7 @@ import ProfilePage from './assets/components/pages/profile/ProfilePage.jsx'
 
 const App = () => {
   return (
+    
     <div className='flex max-w-6x1 mx-auto'>
 
       <Sidebar />
