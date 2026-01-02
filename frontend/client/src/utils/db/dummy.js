@@ -114,4 +114,5 @@ export const USERS_FOR_RIGHT_PANEL = [
 		username: "daisydoe",
 		profileImg: "/avatars/girl2.png",
 	},
+
 ];

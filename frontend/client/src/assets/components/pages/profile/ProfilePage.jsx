@@ -90,6 +90,7 @@ const ProfilePage = () => {
                                     ref={coverImgRef}
                                     onChange={(e) => handleImgChange(e, "coverImg")}
                                 />
+
                                 <input
                                     type='file'
                                     hidden
