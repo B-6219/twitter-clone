@@ -19,6 +19,15 @@ const SignUpPage = () => {
         password: "",
     });
 
+    const { mutate, isError, isPending } = useMutation({
+        mutationFn: async ({ email, password, username, fullName }) => {
+            try {
+                const res = await fetch('/api/auth/signup')
+            } catch (error) {
+
+            }
+        }
+    })
 
 
     const handleSubmit = (e) => {
@@ -31,7 +40,7 @@ const SignUpPage = () => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const isError = false;
+
     return (
         <div className='max-w-7xl mx-auto flex h-screen px-10'>
             <div className='flex-1 hidden lg:flex items-center  justify-center'>
