@@ -9,7 +9,8 @@ import { MdOutlineMail } from "react-icons/md";
 import { FaUser } from "react-icons/fa";
 import { MdPassword } from "react-icons/md";
 import { MdDriveFileRenameOutline } from "react-icons/md";
-
+import toast from "react-hot-toast";
+import { useMutation } from '@tanstack/react-query'
 
 const SignUpPage = () => {
     const [formData, setFormData] = useState({
@@ -22,9 +23,22 @@ const SignUpPage = () => {
     const { mutate, isError, isPending } = useMutation({
         mutationFn: async ({ email, password, username, fullName }) => {
             try {
-                const res = await fetch('/api/auth/signup')
-            } catch (error) {
+                const res = await fetch('/api/auth/signup', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email, password, fullName, username })
+                })
 
+                if (!res.ok) throw new Error('Something went wrong')
+                const data = await res.json()
+                if (data.error) throw new Error(data.error)
+                console.log(data);
+                return data
+            } catch (error) {
+                console.log(error);
+                toast(error.message)
             }
         }
     })
@@ -32,7 +46,7 @@ const SignUpPage = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault(); // page won't reload
-        console.log(formData);
+        mutate(formData)
 
     };
 
@@ -96,8 +110,10 @@ const SignUpPage = () => {
                             value={formData.password}
                         />
                     </label>
-                    <button className='btn rounded-full btn-primary text-white'>Sign Up</button>
-                    {isError && <p className='text-red-500'>Something went wrong</p>}
+                    <button className='btn rounded-full btn-primary text-white'> {
+                        isPending ? 'Loading....' : 'Sign Up'
+                    }</button>
+                    {isError && <p className='text-red-500'>{Error.message} </p>}
                 </form>
                 <div className='flex flex-col lg:w-2/3 gap-2 mt-4'>
                     <p className='text-white text-lg'>Already have an account?</p>

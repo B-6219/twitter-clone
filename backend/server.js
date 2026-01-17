@@ -23,5 +23,8 @@ app.get("/", (req, res) => {
 
 app.listen(PORT, () => {
   console.log("Server is running successfully");
+
+  console.log("DB URI is:", process.env.MONGO_DB_URI);
   connectMongoDb();
+
 });

@@ -10,6 +10,7 @@ import Sidebar from './assets/components/common/Sidebar.jsx'
 import RightPanel from './assets/components/common/RightPanel.jsx'
 import NotificationPage from './assets/components/pages/notifications/NotificationPage.jsx'
 import ProfilePage from './assets/components/pages/profile/ProfilePage.jsx'
+import { Toaster } from 'react-hot-toast'
 
 
 const App = () => {
@@ -28,6 +29,7 @@ const App = () => {
       </Routes>
 
       <RightPanel />
+      <Toaster />
     </div>
   )
 }
