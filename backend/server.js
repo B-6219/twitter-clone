@@ -1,9 +1,14 @@
+import dotenv from 'dotenv'
 import express from "express";
 import authRoutes from "./routes/auth.router.js";
 import connectMongoDb from "./db/connectMongoDb.js";
 import cookieParser from "cookie-parser";
 
+
 import userRoutes from "./routes/user.routes.js";
+
+
+dotenv.config()
 const app = express();
 const PORT = 5000;
 
