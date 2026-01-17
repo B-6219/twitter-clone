@@ -6,4 +6,5 @@ export default defineConfig({
   plugins: [
     tailwindcss(),
   ],
+  port: 5000
 })
