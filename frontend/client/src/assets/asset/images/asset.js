@@ -1,8 +1,9 @@
 import post1 from '../images/post1.jpg'
 import post2 from '../images/post2.png'
+import post3 from '../images/p_img14.png'
 export const assets = [
     post1,
-    post2
+    post2, post3
 ]
 export const user = [
     {
@@ -57,7 +58,7 @@ export const POSTS = [
         text: "How you guys doing? 😊",
         user: {
             username: "johndoe",
-            profileImg: "/avatars/boy2.png",
+            profileImg: post3,
             fullName: "John Doe",
         },
         comments: [
@@ -88,10 +89,10 @@ export const POSTS = [
     {
         _id: "4",
         text: "I'm learning GO this week. Any tips? 🤔",
-        img: "/posts/post3.png",
+        img: post3,
         user: {
             username: "johndoe",
-            profileImg: "/avatars/boy3.png",
+            profileImg: post3,
             fullName: "John Doe",
         },
         comments: [
@@ -142,7 +143,7 @@ export const USERS_FOR_RIGHT_PANEL = [
         _id: "4",
         fullName: "Daisy Doe",
         username: "daisydoe",
-        profileImg: "/avatars/girl2.png",
+        profileImg: post2,
     },
 
 ];

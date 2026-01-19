@@ -9,7 +9,8 @@ import ProfileHeaderSkeleton from "./ProfileHeaderSkeleton.jsx";
 import EditProfileModal from "./EditProfileModal";
 
 //import { POSTS } from "../../../../../utils/db/dummy";
-import { POSTS } from "../../../../utils/db/dummy.js";
+//import { POSTS } from "../../../../utils/db/dummy.js";
+import { POSTS } from '../../../asset/images/asset.js'
 import { FaArrowLeft } from "react-icons/fa6";
 import { IoCalendarOutline } from "react-icons/io5";
 import { FaLink } from "react-icons/fa";
@@ -75,7 +76,7 @@ const ProfilePage = () => {
                             {/* COVER IMG */}
                             <div className='relative group/cover'>
                                 <img
-                                    src={coverImg || user?.coverImg || "/cover.png"}
+                                    src={user.coverImg}
                                     className='h-52 w-full object-cover'
                                     alt='cover image'
                                 />
