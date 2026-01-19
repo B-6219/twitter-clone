@@ -5,7 +5,8 @@ import React from "react";
 import Post from "../common/Post"
 
 import PostSkeleton from "../skeletons/PostSkeleton";
-import { POSTS } from "../../../utils/db/dummy";
+//import { POSTS } from "../../../utils/db/dummy";
+import { POSTS } from "../../asset/images/asset.js";
 
 const Posts = () => {
     const isLoading = false;

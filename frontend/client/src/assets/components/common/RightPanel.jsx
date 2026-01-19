@@ -2,7 +2,8 @@ import React from "react";
 
 import { Link } from "react-router-dom";
 //import { USERS_FOR_RIGHT_PANEL } from "../../utils/db/dummy.js";
-import { USERS_FOR_RIGHT_PANEL } from "../../../utils/db/dummy.js";
+//import { USERS_FOR_RIGHT_PANEL } from "../../../utils/db/dummy.js";
+import { USERS_FOR_RIGHT_PANEL } from "../../asset/images/asset.js";
 
 import RightPanelSkeleton from "../skeletons/RightPanelSkeleton";
 
@@ -26,6 +27,7 @@ const RightPanel = () => {
                     )}
                     {!isLoading &&
                         USERS_FOR_RIGHT_PANEL?.map((user) => (
+
                             <Link
                                 to={`/profile/${user.username}`}
                                 className='flex items-center justify-between gap-4'

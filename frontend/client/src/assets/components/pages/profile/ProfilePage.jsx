@@ -15,6 +15,10 @@ import { IoCalendarOutline } from "react-icons/io5";
 import { FaLink } from "react-icons/fa";
 import { MdEdit } from "react-icons/md";
 
+
+import { assets } from '../../../asset/images/asset.js'
+import { user } from '../../../asset/images/asset.js'
+
 const ProfilePage = () => {
     const [coverImg, setCoverImg] = useState(null);
     const [profileImg, setProfileImg] = useState(null);
@@ -26,17 +30,17 @@ const ProfilePage = () => {
     const isLoading = false;
     const isMyProfile = true;
 
-    const user = {
-        _id: "1",
-        fullName: "John Doe",
-        username: "johndoe",
-        profileImg: "/avatars/boy2.png",
-        coverImg: "/cover.png",
-        bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        link: "https://youtube.com/@asaprogrammer_",
-        following: ["1", "2", "3"],
-        followers: ["1", "2", "3"],
-    };
+    // const user = {
+    //     _id: "1",
+    //     fullName: "John Doe",
+    //     username: "johndoe",
+    //     profileImg: "/avatars/boy2.png",
+    //     coverImg: "/cover.png",
+    //     bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    //     link: "https://youtube.com/@asaprogrammer_",
+    //     following: ["1", "2", "3"],
+    //     followers: ["1", "2", "3"],
+    // };
 
     const handleImgChange = (e, state) => {
         const file = e.target.files[0];
@@ -55,7 +59,7 @@ const ProfilePage = () => {
             <div className='flex-[4_4_0]  border-r border-gray-700 min-h-screen '>
                 {/* HEADER */}
                 {isLoading && <ProfileHeaderSkeleton />}
-                {!isLoading && !user && <p className='text-center text-lg mt-4'>User not found</p>}
+                {!isLoading && !{ user } && <p className='text-center text-lg mt-4'>User not found</p>}
                 <div className='flex flex-col'>
                     {!isLoading && user && (
                         <>
@@ -162,11 +166,11 @@ const ProfilePage = () => {
                                 </div>
                                 <div className='flex gap-2'>
                                     <div className='flex gap-1 items-center'>
-                                        <span className='font-bold text-xs'>{user?.following.length}</span>
+                                        <span className='font-bold text-xs'>{assets.user?.following.length}</span>
                                         <span className='text-slate-500 text-xs'>Following</span>
                                     </div>
                                     <div className='flex gap-1 items-center'>
-                                        <span className='font-bold text-xs'>{user?.followers.length}</span>
+                                        <span className='font-bold text-xs'>{assets.user?.followers.length}</span>
                                         <span className='text-slate-500 text-xs'>Followers</span>
                                     </div>
                                 </div>

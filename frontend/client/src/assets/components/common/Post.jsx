@@ -9,10 +9,11 @@ import { FaTrash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const Post = ({ post }) => {
+    const [newComment, setNewComment] = useState('');
 
     if (!post || !post.user) return null;
 
-    const [newComment, setNewComment] = useState("");
+
     const postOwner = post.user;
     const isLiked = false;
 
@@ -22,7 +23,9 @@ const Post = ({ post }) => {
 
     const isCommenting = false;
 
-    const handleDeletePost = () => {};
+    const handleDeletePost = () => { };
+
+
 
     const handlePostComment = (e) => {
         e.preventDefault();
@@ -75,7 +78,7 @@ const Post = ({ post }) => {
                         <div className='flex gap-4 items-center w-2/3 justify-between'>
                             <div
                                 className='flex gap-1 items-center cursor-pointer group'
-                                onClick={() => document.getElementById("comments_modal" + post._id).showModal()}
+                                onClick={() => document.getElementById(`comments_modal${post._id}`).showModal()}
                             >
                                 <FaRegComment className='w-4 h-4  text-slate-500 group-hover:text-sky-400' />
                                 <span className='text-sm text-slate-500 group-hover:text-sky-400'>
