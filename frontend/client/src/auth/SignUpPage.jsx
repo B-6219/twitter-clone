@@ -11,7 +11,6 @@ import { MdPassword } from "react-icons/md";
 import { MdDriveFileRenameOutline } from "react-icons/md";
 import toast from "react-hot-toast";
 import { useMutation } from '@tanstack/react-query'
-
 const SignUpPage = () => {
     const [formData, setFormData] = useState({
         email: "",
@@ -20,28 +19,56 @@ const SignUpPage = () => {
         password: "",
     });
 
-    const { mutate, isError, isPending } = useMutation({
-        mutationFn: async ({ email, password, username, fullName }) => {
-            try {
-                const res = await fetch('/api/auth/signup', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ email, password, fullName, username })
-                })
+    // const { mutate, isError, isPending } = useMutation({
+    //     mutationFn: async ({ email, password, username, fullName }) => {
+    //         try {
+    //             const res = await fetch('/api/auth/signup', {
+    //                 method: 'POST',
+    //                 headers: {
+    //                     'Content-Type': 'application/json'
+    //                 },
+    //                 body: JSON.stringify({ email, password, fullName, username })
+    //             })
 
-                if (!res.ok) throw new Error('Something went wrong')
-                const data = await res.json()
-                if (data.error) throw new Error(data.error)
-                console.log(data);
-                return data
-            } catch (error) {
-                console.log(error);
-                toast(error.message)
+    //             if (!res.ok) throw new Error('Something went wrong')
+    //             const data = await res.json()
+    //             if (data.error) throw new Error(data.error)
+    //             console.log(data);
+    //             return data
+    //         } catch (error) {
+    //             console.error(error);
+    //             toast.error(error.message)
+    //         }
+    //     },
+    //     onSuccess: () => {
+    //         toast.success("Account created sucessfully")
+    //     }
+    // })
+
+    const { mutate, isPending, isError } = useMutation({
+        mutationFn: async (formData) => {
+            const res = await fetch("http://localhost:4000/api/auth/signup", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(formData),
+            });
+
+            const data = await res.json();
+
+            if (!res.ok) {
+                throw new Error(data.error || "Signup failed");
             }
-        }
-    })
+
+            return data;
+        },
+        onSuccess: () => {
+            toast.success("Account created successfully");
+        },
+        onError: (error) => {
+            toast.error(error.message);
+        },
+    });
+
 
 
     const handleSubmit = (e) => {
@@ -126,3 +153,11 @@ const SignUpPage = () => {
     );
 };
 export default SignUpPage;
+
+
+
+
+
+
+
+

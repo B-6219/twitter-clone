@@ -3,6 +3,7 @@ import express from "express";
 import authRoutes from "./routes/auth.router.js";
 import connectMongoDb from "./db/connectMongoDb.js";
 import cookieParser from "cookie-parser";
+import cors from 'cors'
 
 
 import userRoutes from "./routes/user.routes.js";
@@ -10,7 +11,12 @@ import userRoutes from "./routes/user.routes.js";
 
 dotenv.config()
 const app = express();
-const PORT = 5000;
+const PORT = 4000;
+
+app.use(cors({
+  origin: "http://localhost:3000",
+  credentials: true
+}));
 
 app.use(express.json())
 
@@ -28,6 +34,8 @@ app.get("/", (req, res) => {
 
 app.listen(PORT, () => {
   console.log("Server is running successfully");
+  console.log('http://localhost:4000');
+
 
   console.log("DB URI is:", process.env.MONGO_DB_URI);
   connectMongoDb();
